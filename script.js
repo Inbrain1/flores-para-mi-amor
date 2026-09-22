@@ -659,6 +659,9 @@ function showModal(type) {
     setTimeout(() => modal.remove(), 400);
   };
 
+  // Cerrar al hacer clic fuera del contenido
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
   if (type === 'envelope') {
     const lock = document.getElementById('fw-lock');
     const riddleBox = document.getElementById('fw-riddle-box');
@@ -668,6 +671,11 @@ function showModal(type) {
     const flap = document.getElementById('fw-flap');
     const letter = document.getElementById('fw-letter');
     const closeEnvBtn = document.getElementById('fw-close-env');
+
+    // Evento para el botón cerrar de la carta
+    closeEnvBtn.addEventListener('click', closeModal);
+    closeEnvBtn.addEventListener('mouseenter', () => closeEnvBtn.style.transform = 'scale(1.05)');
+    closeEnvBtn.addEventListener('mouseleave', () => closeEnvBtn.style.transform = 'scale(1)');
 
     lock.addEventListener('click', () => {
       lock.style.transform = 'translate(-50%, -50%) scale(0.9)';
@@ -738,6 +746,12 @@ function showModal(type) {
       input.style.borderColor = '#d4af37';
     });
     input.addEventListener('keypress', e => { if (e.key === 'Enter') checkAnswer(); });
+  } else {
+    // Evento para cerrar la sorpresa genérica
+    const btn = document.getElementById('fw-close');
+    btn.addEventListener('click', closeModal);
+    btn.addEventListener('mouseenter', () => btn.style.transform = 'scale(1.05)');
+    btn.addEventListener('mouseleave', () => btn.style.transform = 'scale(1)');
   }
 }
 
@@ -757,7 +771,7 @@ canvas.addEventListener('pointerdown', e => {
     // Mostrar modal con pequeño retraso para disfrutar el salto de la flor
     setTimeout(() => {
       if (hit === 0) { // La flor central superior
-        showModal('riddle');
+        showModal('envelope');
       } else { // Cualquier otra flor
         showModal('soon');
       }
