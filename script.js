@@ -78,8 +78,6 @@ function calcLayout() {
     [  2.00*S,  -0.10*S,  0.76,  5,  1.6 ], // Lateral der
     [ -0.48*S,   0.10*S,  0.65,  1,  3.2 ], // Centro bajo izq (fondo)
     [  0.48*S,   0.10*S,  0.65,  1,  2.7 ], // Centro bajo der (fondo)
-    [ -0.88*S,  -0.42*S,  0.60,  2,  4.0 ], // Medio-fondo izq
-    [  0.88*S,  -0.42*S,  0.60,  2,  3.5 ], // Medio-fondo der
   ];
 
   L = { S, cx, openY, openHW, bowY, tipY, tipHW };
