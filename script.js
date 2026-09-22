@@ -90,6 +90,7 @@ function calcLayout() {
       scale: new Spring(0, 90, 10),
       pop:   new Spring(0, 350, 16),
       absX: 0, absY: 0,
+      isMain: i === 0 // Identificador de la flor principal (centro arriba)
     }));
     FLW.sort((a, b) => a.z - b.z);
   }
@@ -770,7 +771,7 @@ canvas.addEventListener('pointerdown', e => {
       
     // Mostrar modal con pequeño retraso para disfrutar el salto de la flor
     setTimeout(() => {
-      if (hit === 0) { // La flor central superior
+      if (FLW[hit].isMain) { // La flor central superior real
         showModal('envelope');
       } else { // Cualquier otra flor
         showModal('soon');
